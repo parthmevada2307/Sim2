@@ -216,7 +216,7 @@ function setup() {
 
   resetButton = createButton("Reset");
   resetButton.position(width / 2 - 30, max(90 * layout.scale, 70));
-  resetButton.mousePressed(resetSimulation);
+  resetButton.elt.addEventListener('click', resetSimulation);
 }
 
 function windowResized() {
