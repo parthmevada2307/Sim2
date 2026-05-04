@@ -205,6 +205,7 @@ function buildLayout() {
 }
 
 function setup() {
+  window.scrollTo(0, 0);
   createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
   textFont('Times New Roman');
@@ -579,19 +580,16 @@ function touchStarted() {
   if (touches.length > 0) {
     handlePress(touches[0].x, touches[0].y);
   }
-  return false;
 }
 
 function touchMoved() {
   if (touches.length > 0) {
     handleDrag(touches[0].x, touches[0].y);
   }
-  return false;
 }
 
 function touchEnded() {
   handleRelease();
-  return false;
 }
 
 function handlePress(px, py) {
