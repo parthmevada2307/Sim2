@@ -174,6 +174,7 @@ function buildLayout() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  pixelDensity(1);
   textFont('Times New Roman');
 
   buildLayout();
