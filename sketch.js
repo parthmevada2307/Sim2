@@ -94,31 +94,63 @@ class Drop {
 }
 
 function buildLayout() {
-  let s = min(width, height) / 800;
-  s = max(s, 0.45);
+  let isPortrait = height > width;
 
-  let leftMargin = max(width * 0.03, 10);
-  let itemSize = max(30 * s, 22);
-  let itemSpacing = max(45 * s, 32);
-  let topMargin = max(130 * s, 100);
-  let fontSize = max(14 * s, 9);
+  let leftMargin, topMargin, itemSize, itemSpacing, fontSize;
+  let beakerCx, beakerTopY, beakerW, beakerH;
+  let litmusInitX, litmusInitY, litmusW, litmusH;
+  let meterX, meterY, meterRadius;
 
-  let beakerCx = max(width * 0.42, leftMargin + 150 * s);
-  let beakerTopY = topMargin + 120 * s;
-  let beakerW = max(120 * s, 70);
-  let beakerH = max(200 * s, 120);
+  if (isPortrait) {
+    let sw = width / 400;
+    let sh = height / 800;
 
-  let litmusInitX = beakerCx + beakerW / 2 + 40 * s;
-  let litmusInitY = beakerTopY;
-  let litmusW = max(25 * s, 15);
-  let litmusH = max(100 * s, 60);
+    leftMargin = 10;
+    topMargin = 120 * sh;
+    itemSize = 25 * sw;
+    itemSpacing = ((height - topMargin - 80) / 11);
+    fontSize = 14 * sw;
 
-  let meterX = min(width * 0.78, width - 150 * s);
-  let meterY = beakerTopY + beakerH + 80 * s;
-  let meterRadius = max(100 * s, 60);
+    beakerCx = width * 0.65;
+    beakerTopY = topMargin + 80 * sh;
+    beakerW = 100 * sw;
+    beakerH = 200 * sh;
+
+    litmusInitX = beakerCx + beakerW / 2 + 25 * sw;
+    litmusInitY = beakerTopY;
+    litmusW = 20 * sw;
+    litmusH = 80 * sh;
+
+    meterX = beakerCx;
+    meterY = beakerTopY + beakerH + 110 * sh;
+    meterRadius = 70 * sw;
+  } else {
+    let s = min(width, height) / 800;
+    s = max(s, 0.45);
+
+    leftMargin = max(width * 0.03, 10);
+    itemSize = max(30 * s, 22);
+    itemSpacing = max(45 * s, 32);
+    topMargin = max(130 * s, 100);
+    fontSize = max(14 * s, 9);
+
+    beakerCx = max(width * 0.42, leftMargin + 150 * s);
+    beakerTopY = topMargin + 120 * s;
+    beakerW = max(120 * s, 70);
+    beakerH = max(200 * s, 120);
+
+    litmusInitX = beakerCx + beakerW / 2 + 40 * s;
+    litmusInitY = beakerTopY;
+    litmusW = max(25 * s, 15);
+    litmusH = max(100 * s, 60);
+
+    meterX = min(width * 0.78, width - 150 * s);
+    meterY = beakerTopY + beakerH + 80 * s;
+    meterRadius = max(100 * s, 60);
+  }
 
   layout = {
-    scale: s,
+    scale: isPortrait ? width / 800 : max(min(width, height) / 800, 0.45),
     leftMargin: leftMargin,
     topMargin: topMargin,
     itemSize: itemSize,
