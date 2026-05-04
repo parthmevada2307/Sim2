@@ -360,7 +360,7 @@ function draw() {
 
   // pH info box
   let staticBoxX = (height > width) ? width / 2 : min(meterX, width - 130 * s);
-  let staticBoxY = (height > width) ? (layout.beakerTopY + layout.beakerH + 45 * s) : (layout.beakerTopY + 40 * s);
+  let staticBoxY = (height > width) ? (layout.beakerTopY - 50 * s) : (layout.beakerTopY + 40 * s);
 
   let staticMessage = 'Dip paper in liquid';
   let boxColor = 'white';
