@@ -359,8 +359,8 @@ function draw() {
   drawPHMeter(meterX, meterY, meterRadius, phForMeter);
 
   // pH info box
-  let staticBoxX = min(meterX, width - 130 * s);
-  let staticBoxY = layout.beakerTopY + 40 * s;
+  let staticBoxX = (height > width) ? width / 2 : min(meterX, width - 130 * s);
+  let staticBoxY = (height > width) ? (layout.beakerTopY + layout.beakerH + 45 * s) : (layout.beakerTopY + 40 * s);
 
   let staticMessage = 'Dip paper in liquid';
   let boxColor = 'white';
@@ -393,7 +393,7 @@ function draw() {
   noStroke();
   fill(boxColor);
   rect(staticBoxX, staticBoxY, max(220 * s, 140), max(50 * s, 35), 12);
-  fill('white');
+  fill(boxColor === 'white' ? 'black' : 'white');
   text(staticMessage, staticBoxX, staticBoxY);
   pop();
 }
